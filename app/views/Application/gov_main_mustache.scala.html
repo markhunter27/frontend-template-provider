@@ -213,23 +213,29 @@
                 <span class="organisation-logo organisation-logo-medium">HM Revenue &amp; Customs</span>
             </div>
             {{/includeHMRCBranding}}
+
             {{#showLastLogInStatus}}
             <div class="last-login">
-                <p>
-                    {{#userDisplayName}}
-                    {{^previouslyLoggedInAt}}
-                    {{{userDisplayName}}}, this is the first time you have logged in.
-                    {{/previouslyLoggedInAt}}
-                    {{#previouslyLoggedInAt}}
-                    {{{userDisplayName}}}, you last signed in {{{previouslyLoggedInAt}}}.
-                    {{/previouslyLoggedInAt}}
-                    {{/userDisplayName}}
-                    {{#logoutUrl}}
-                    <br><a id="logOutStatusHref" href="{{logoutUrl}}">Sign out</a>
-                    {{/logoutUrl}}
-                </p>
+                {{#userDisplayName}}
+                <p class="text--right h3-heading">{{{userDisplayName}}}</p>
+
+                {{^previouslyLoggedInAt}}
+                <p class="last-login__more-details text--right font-xsmall js-visible">This is the first time you have logged in</p>
+                {{/previouslyLoggedInAt}}
+
+                {{#previouslyLoggedInAt}}
+                <p class="last-login__more-details text--right font-xsmall js-visible">You last signed in {{{previouslyLoggedInAt}}}</p>
+                {{/previouslyLoggedInAt}}
+
+                {{/userDisplayName}}
+
+                {{#logoutUrl}}
+                <br><a id="logOutStatusHref" href="{{logoutUrl}}">Sign out</a>
+                {{/logoutUrl}}
+
             </div>
             {{/showLastLogInStatus}}
+
         </div>
 
         {{/removeServiceInfo}}
